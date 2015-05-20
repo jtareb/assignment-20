@@ -1,0 +1,114 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>assign20</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
+    <link rel="stylesheet" href="../bower_components/foundation/css/foundation.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="../bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body ng-app="Vehicles"> 
+      
+       <div class="contain-to-grid">
+             <nav class="top-bar" data-topbar role="navigation" ng-controller="NavCtrl">
+              <ul class="title-area">
+                <li class="name">
+                  <h1>
+                    <h1><a href="#/">Cars</a></h1>
+                  </h1>    
+                </li>  
+              </ul>
+       
+              <section class="top-bar-section">
+             
+                <ul class="right">
+                  <li class="divider"></li>
+                  <li class="nav-button"><a href="#/login">login</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-button"><a href="#/register">register</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-button"><a href="#" ng-click="logout()">logout</a></li>
+                  <li class="divider"></li>
+                </ul>
+              </section>
+            </nav>
+        </div>
+
+
+        <hr>
+
+        <div class="container row">
+
+        <div class="header">
+            <h1>My Cars</h1>
+          </div>
+
+            <div class="large-12 columns" ng-view>
+
+              <div class="small-12 columns">
+                <div class="small-5 columns">
+                  <div class="left">
+                    <h4>Add a car</h4>
+                      <ul class="stack button-group">
+                        <li><a href="#/addVehicle" class="button-success">Add a Vehicle</a></li>
+                        <li><a href="#" class="button-success">Future</a></li>
+                      </ul>
+                  </div>
+                </div>
+
+                <div class="small-5 columns">
+                  <div class="right">
+                    <h4>Lists of Cars</h4>
+                      <ul class="stack button-group">
+                        <li><a href="#/vehicles" class="button-success">Cars</a></li>
+                        <li><a href="#" class="button-success">Future</a></li>
+                      </ul>
+                  </div>
+                </div>
+              </div>  
+            </div>
+          </div>
+
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/underscore/underscore.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>    
+    <script src="../bower_components/foundation/js/foundation.min.js"></script>
+        <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <script src="scripts/Navigation/nav.controller.js"></script>
+    
+        <script src="scripts/users/user.controller.js"></script>
+        <script src="scripts/users/user.factory.js"></script>
+
+        <script src="scripts/lists/lists.controller.js"></script>
+        <script src="scripts/lists/lists.factory.js"></script>
+
+        <script src="scripts/items/items.controller.js"></script>
+        <script src="scripts/items/items.factory.js"></script>
+
+        <!-- endbuild -->
+</body>
+</html>
