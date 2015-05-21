@@ -4,7 +4,7 @@
 
 	angular.module('Vehicles')
 
-	.controller('ListsController', [ '$scope', 'ListsFactory', '$rootScope', '$location',
+	.controller('listsController', [ '$scope', 'ListsFactory', '$rootScope', '$location',
 
 		function ($scope, ListsFactory, $rootScope, $location) {
 
