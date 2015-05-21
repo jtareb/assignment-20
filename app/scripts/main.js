@@ -47,9 +47,9 @@
     
   }])
 
-  .run([ '$rootScope', 'UserFactory', 'SERVER',
+  .run([ '$rootScope', 'UserFactory', 'PARSE',
 
-    function ($rootScope, UserFactory, SERVER) {
+    function ($rootScope, UserFactory, PARSE) {
       console.log('here');
 
       $rootScope.$on('$routeChangeStart', function () {

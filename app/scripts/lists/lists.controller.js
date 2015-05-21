@@ -4,9 +4,11 @@
 
 	angular.module('Assets')
 
-	.controller('listsController', [ '$scope', 'ListsFactory', '$rootScope', '$location',
+	.controller('listsController', [ '$scope', 'ListsFactory', '$rootScope', '$cacheFactory',
 
-		function ($scope, ListsFactory, $rootScope, $location) {
+		function ($scope, ListsFactory, $rootScope, $cacheFactory) {
+
+			var cache = $cacheFactory.get('http');
 
 			$scope.allVehicles = [];
 
