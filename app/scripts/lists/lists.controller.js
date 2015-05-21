@@ -4,7 +4,7 @@
 
 	angular.module('Assets')
 
-	.controller('listsController', [ '$scope', 'ListsFactory', '$rootScope', '$cacheFactory',
+	.controller('ListsController', [ '$scope', 'ListsFactory', '$rootScope', '$cacheFactory',
 
 		function ($scope, ListsFactory, $rootScope, $cacheFactory) {
 
@@ -15,6 +15,8 @@
 			ListsFactory.getVehicles().success( function(data){
 				$scope.allVehicles = data.results;
 			});
+
+
 
 			
 

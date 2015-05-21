@@ -18,10 +18,17 @@
 
     $routeProvider  
 
+
+    //view a list of appliances
+    .when('/appliances', {
+      templateUrl: 'scripts/lists/lists.appliances.tpl.html',
+      controller: 'ListsController'
+    })
+
     // View list of vehicles
     .when('/vehicles', {
       templateUrl: 'scripts/lists/lists.vehicle.tpl.html',
-      controller: 'ListController'
+      controller: 'ListsController'
     })
 
     // Login Page
@@ -37,10 +44,19 @@
     })
 
     // add vehicle
-    .when('/add', {
+    .when('/addVehicle', {
       templateUrl: 'scripts/items/items.vehicle.tpl.html',
       controller: 'ItemsController'
     })
+
+
+    // add vehicle
+    .when('/addAppliance', {
+      templateUrl: 'scripts/items/items.appliance.tpl.html',
+      controller: 'ItemsController'
+    })
+
+
 
     // Go Home ET
     .otherwise('/');
@@ -50,12 +66,14 @@
   .run([ '$rootScope', 'UserFactory', 'PARSE',
 
     function ($rootScope, UserFactory, PARSE) {
-      console.log('here');
+      
 
       $rootScope.$on('$routeChangeStart', function () {
         
         // Run my Login Status
         UserFactory.status();
+
+        var user = UserFactory.user();
         
 
       })

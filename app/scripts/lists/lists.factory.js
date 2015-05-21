@@ -4,7 +4,7 @@
 
 	angular.module('Assets')
 
-	.factory('listsFactory', [ '$http', 'PARSE', 'UserFactory', '$rootScope',
+	.factory('ListsFactory', [ '$http', 'PARSE', 'UserFactory', '$rootScope',
 
 		function ( $http, PARSE, UserFactory, $rootScope){
 
@@ -24,7 +24,23 @@
 				getVehicles: getAllVehicles
 			
 			};
+
+			var getAllAppliances = function(){
+				return $http.get(PARSE.URL + 'classes/appliances', PARSE.CONFIG)
+				.success(function(){
+					$rootScope.$broadcast('allAppliances: list');
+
+					
+				});
+			};
+
+			return {
+				getAppliances: getAllAppliances
+				
+			};
+
 		}
+		
 
 	]);
 

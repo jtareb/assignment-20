@@ -4,7 +4,7 @@
 
 	angular.module('Assets')
 
-	.factory('itemsFactory', [ '$http', 'PARSE', '$location','$rootScope',
+	.factory('ItemsFactory', [ '$http', 'PARSE', '$location','$rootScope',
 		function ($http, PARSE, $location, $rootScope){
 
 			var addVehicle = function(obj){

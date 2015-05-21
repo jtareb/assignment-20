@@ -1,0 +1,17 @@
+<div class="aInfo">
+	<h2>Appliance information</h2>
+
+	<input type="text", ng-model="searchText", placeholder="Enter search information">
+
+	<hr>
+
+		<div class="single-appliance" ng-repeat="appliance in allAppliances | filter: searchText">
+			<div class="app-Content">
+				<h2>{{ appliance.name }}</h2>
+				<h3>{{ appliance.type }}</h3>
+				<h3>Year: {{ appliance.year }}</h3>
+				<h3>Description {{ app.desc }}</h3>
+				<h3>Estimated Value: {{ vehicle.value }}</h3>
+			</div>
+		</div>
+</div>

@@ -4,7 +4,7 @@
 
 	angular.module('Assets')
 
-	.controller('itemsController', [ '$scope', 'ItemsFactory', '$rootScope', 
+	.controller('ItemsController', [ '$scope', 'ItemsFactory', '$rootScope', 
 
 		function ($scope, ItemsFactory, $rootScope) {
 
@@ -18,6 +18,9 @@
 			$rootScope.$on('Vehicle:add', function(){
 
 			});
+
+
+			
 		}
 	])
 
