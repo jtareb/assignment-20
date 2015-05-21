@@ -1,6 +1,6 @@
 ;(function () {
 
-  angular.module('Vehicles', ['ngRoute', 'ngCookies'])
+  angular.module('Assets', ['ngRoute', 'ngCookies'])
 
   .constant('PARSE', {
     

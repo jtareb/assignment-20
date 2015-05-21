@@ -2,7 +2,7 @@
 
 	'use strict'
 
-	angular.module('Vehicles')
+	angular.module('Assets')
 
 	.factory('itemsFactory', [ '$http', 'PARSE', '$location','$rootScope',
 		function ($http, PARSE, $location, $rootScope){

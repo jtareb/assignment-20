@@ -3,7 +3,7 @@
 
   'use strict'
 
-  angular.module('Vehicles')
+  angular.module('Assets')
 
   .controller('NavCtrl', ['$scope', 'UserFactory', 
 

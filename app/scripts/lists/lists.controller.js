@@ -2,7 +2,7 @@
 
 	'use strict'
 
-	angular.module('Vehicles')
+	angular.module('Assets')
 
 	.controller('listsController', [ '$scope', 'ListsFactory', '$rootScope', '$location',
 
