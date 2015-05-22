@@ -20,15 +20,15 @@
 
 
     //view a list of appliances
-    .when('/appliances', {
-      templateUrl: 'scripts/lists/lists.appliances.tpl.html',
-      controller: 'ListsController'
-    })
+    //.when('/appliances', {
+    // templateUrl: 'scripts/lists/lists.appliances.tpl.html',
+    //  controller: 'ApplianceCtrl'
+    //})
 
     // View list of vehicles
     .when('/vehicles', {
       templateUrl: 'scripts/lists/lists.vehicle.tpl.html',
-      controller: 'ListsController'
+      controller: 'VehicleCtrl'
     })
 
     // Login Page
@@ -51,10 +51,10 @@
 
 
     // add vehicle
-    .when('/addAppliance', {
-      templateUrl: 'scripts/items/items.appliance.tpl.html',
-      controller: 'ItemsController'
-    })
+    //.when('/addAppliance', {
+    //  templateUrl: 'scripts/items/items.appliance.tpl.html',
+    //  controller: 'itemAppCtrl'
+    //})
 
 
 

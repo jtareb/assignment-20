@@ -1,3 +1,6 @@
+ // Bourbon & Neat
+@import '../../bower_components/bourbon/dist/bourbon';
+@import '../../bower_components/neat/app/assets/stylesheets/neat';
 
 // Custom Styles
 body {
@@ -19,16 +22,33 @@ body {
 
 }
 
+.vInfo {
+	color: black;
+	overflow: auto;
+	border-bottom: 1px solid grey;
+
+	 h2 {
+      color: black;
+      border-top: 1px solid grey;
+
+    }
+    h3 {
+      color: black;
+    }
+
+	
+}
+
 .small-12 {
 	margin-top: 100px;
 }
 
-.left {
-	border-style: solid;
-	border-color: black;
-}
+//.left {
+//	border-style: solid;
+//	border-color: black;
+//}
 
-.right {
-	border-style: solid:
-	border-color: black;
-}
+//.right {
+//	border-style: solid;
+//	border-color: black;
+//}

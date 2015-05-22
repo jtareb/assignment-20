@@ -4,40 +4,28 @@
 
 	angular.module('Assets')
 
-	.factory('ListsFactory', [ '$http', 'PARSE', 'UserFactory', '$rootScope',
+	.factory('ListsFactory', [ '$http', 'PARSE', 'UserFactory', '$rootScope', '$location',
 
-		function ( $http, PARSE, UserFactory, $rootScope){
+		function ( $http, PARSE, UserFactory, $rootScope, $location){
 
 			var user = UserFactory.user();
 
-			//get list
+			//get list of Vehicles
 			var getAllVehicles = function(){
-				return $http.get(PARSE.URL + 'classes/vehicles', PARSE.CONFIG)
+				return $http.get(PARSE.URL + 'classes/Vehicles', PARSE.CONFIG)
 				.success(function(){
-					//$rootScope.$broadcast('allVehicles: list');//
+					$rootScope.$broadcast('allVehicles: list');
 				});
 			};
 
 
+
 			return {
 
-				getVehicles: getAllVehicles
+				get: getAllVehicles
+				
 			
 			};
-
-			//var getAllAppliances = function(){
-			//	return $http.get(PARSE.URL + 'classes/appliances', PARSE.CONFIG)
-			//	.success(function(){
-			//		$rootScope.$broadcast('allAppliances: list');
-
-					
-				//});
-			//};
-
-			//return {
-			//	getAppliances: getAllAppliances
-				
-			//};
 
 		}
 		
