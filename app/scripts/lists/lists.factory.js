@@ -14,7 +14,7 @@
 			var getAllVehicles = function(){
 				return $http.get(PARSE.URL + 'classes/vehicles', PARSE.CONFIG)
 				.success(function(){
-					$rootScope.$broadcast('allVehicles: list');
+					//$rootScope.$broadcast('allVehicles: list');//
 				});
 			};
 
@@ -25,19 +25,19 @@
 			
 			};
 
-			var getAllAppliances = function(){
-				return $http.get(PARSE.URL + 'classes/appliances', PARSE.CONFIG)
-				.success(function(){
-					$rootScope.$broadcast('allAppliances: list');
+			//var getAllAppliances = function(){
+			//	return $http.get(PARSE.URL + 'classes/appliances', PARSE.CONFIG)
+			//	.success(function(){
+			//		$rootScope.$broadcast('allAppliances: list');
 
 					
-				});
-			};
+				//});
+			//};
 
-			return {
-				getAppliances: getAllAppliances
+			//return {
+			//	getAppliances: getAllAppliances
 				
-			};
+			//};
 
 		}
 		
