@@ -17,12 +17,22 @@
 					$rootScope.$broadcast('allVehicles: list');
 				});
 			};
+			//get list of appliances
+			var getAllAppliances = function(){
+				return $http.get(PARSE.URL + 'classes/Appliances', PARSE.CONFIG)
+				.success(function(){
+					$rootScope.$broadcast('allAppliances: list')
+				});
+			};
 
 
 
 			return {
 
-				get: getAllVehicles
+				get: getAllVehicles,
+				getAppliances: getAllAppliances
+		
+
 				
 			
 			};

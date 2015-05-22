@@ -39,6 +39,21 @@ body {
 	
 }
 
+.appInfo {
+  color: black;
+  overflow: auto;
+  border-bottom: 1px solid grey;
+
+    h2 {
+      color: black;
+      border-top: 1px solid grey;
+    }
+
+    h3 {
+      color: black;
+    }
+}
+
 .small-12 {
 	margin-top: 100px;
 }

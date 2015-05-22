@@ -9,7 +9,7 @@
 
 
 			//add a vehicle
-			var addVehicle = function(obj){
+			var addVehicles = function(obj){
 				$http.post(PARSE.URL + 'classes/Vehicles', obj, PARSE.CONFIG)
 				.success(function(){
 					$rootScope.$broadcast('vehicle: add');
@@ -17,18 +17,22 @@
 			};
 
 			//add an appliance
-			//var addAppliance = function(obj){
-			//	$http.post(PARSE.URL + 'classes/Appliances', obj, PARSE.CONFIG)
-			//	.success(function(){
-			//		$rootScope.$broadcast('appliance: add');
-			//	});
+			var addAppliance = function(obj){
+				$http.post(PARSE.URL + 'classes/Appliances', obj, PARSE.CONFIG)
+				.success(function(){
+					$rootScope.$broadcast('appliance: add');
+				});
 
-			//};
+			};
 
 
 
 			return {
-				add: addVehicle
+				add: addVehicles, 
+				addApp: addAppliance
+			
+				
+
 			};
 
 		}

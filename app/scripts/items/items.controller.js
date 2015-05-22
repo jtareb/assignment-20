@@ -4,20 +4,46 @@
 
 	angular.module('Assets')
 
-	.controller('ItemsController', [ '$scope', 'ItemsFactory', '$rootScope', 
+	.controller('ItemsController', [ '$scope', 'ItemsFactory', '$rootScope', '$cacheFactory',
 
-		function ($scope, ItemsFactory, $rootScope) {
+		function ($scope, ItemsFactory, $rootScope, $cacheFactory) {
 
-			$scope.allVehicles = [];
+				var cache = $cacheFactory.get('http');
 
-			$scope.addVehicle = function(v){
-				ItemsFactory.add(v);
-				console.log(v);
-			};
 
-			$rootScope.$on('Vehicle:add', function(){
+				//$scope.allVehicles = [];
 
-			});
+
+				   $scope.addVehicle = function(v){
+
+
+				        ItemsFactory.add(v);
+				        console.log(v);
+
+
+      				};
+
+
+      				$rootScope.$on('Vehicle:add', function(){
+      				});
+
+
+      				$scope.addAppliance = function(a){
+      					ItemsFactory.addApp(a);
+      					console.log(a);
+      				};
+
+      				$rootScope.$on('Appliance:add', function(){
+
+      				});
+
+			
+
+			
+
+			
+
+
 
 
 			

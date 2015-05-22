@@ -50,12 +50,17 @@
     })
 
 
-    // add vehicle
-    //.when('/addAppliance', {
-    //  templateUrl: 'scripts/items/items.appliance.tpl.html',
-    //  controller: 'itemAppCtrl'
-    //})
+    // add an appliance
+    .when('/addAppliance', {
+     templateUrl: 'scripts/items/items.appliance.tpl.html',
+      controller: 'ItemsController'
+    })
 
+    //viw list of appliances
+    .when('/appliances', {
+      templateUrl: 'scripts/lists/lists.appliance.tpl.html',
+      controller: 'AppCtrl'
+    })
 
 
     // Go Home ET
