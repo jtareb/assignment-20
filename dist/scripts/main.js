@@ -1,6 +1,9 @@
 ;(function () {
 
-  angular.module('Vehicles', ['ngRoute', 'ngCookies'])
+
+  
+
+  angular.module('Assets', ['ngRoute', 'ngCookies'])
 
   .constant('PARSE', {
     
@@ -18,10 +21,17 @@
 
     $routeProvider  
 
+
+    //view a list of appliances
+    //.when('/appliances', {
+    // templateUrl: 'scripts/lists/lists.appliances.tpl.html',
+    //  controller: 'ApplianceCtrl'
+    //})
+
     // View list of vehicles
     .when('/vehicles', {
       templateUrl: 'scripts/lists/lists.vehicle.tpl.html',
-      controller: 'ListController'
+      controller: 'VehicleCtrl'
     })
 
     // Login Page
@@ -37,25 +47,41 @@
     })
 
     // add vehicle
-    .when('/add', {
+    .when('/addVehicle', {
       templateUrl: 'scripts/items/items.vehicle.tpl.html',
       controller: 'ItemsController'
     })
+
+
+    // add an appliance
+    .when('/addAppliance', {
+     templateUrl: 'scripts/items/items.appliance.tpl.html',
+      controller: 'ItemsController'
+    })
+
+    //viw list of appliances
+    .when('/appliances', {
+      templateUrl: 'scripts/lists/lists.appliance.tpl.html',
+      controller: 'AppCtrl'
+    })
+
 
     // Go Home ET
     .otherwise('/');
     
   }])
 
-  .run([ '$rootScope', 'UserFactory', 'SERVER',
+  .run([ '$rootScope', 'UserFactory', 'PARSE',
 
-    function ($rootScope, UserFactory, SERVER) {
-      console.log('here');
+    function ($rootScope, UserFactory, PARSE) {
+      
 
       $rootScope.$on('$routeChangeStart', function () {
         
         // Run my Login Status
         UserFactory.status();
+
+        var user = UserFactory.user();
         
 
       })
@@ -65,12 +91,17 @@
   ])
 
 }());
+; (function()  {
+
+	var d = new Date();
+  	document.getElementById("date").innerHTML = d.toDateString();
+}());
 ;(function (){
   
 
   'use strict'
 
-  angular.module('Vehicles')
+  angular.module('Assets')
 
   .controller('NavCtrl', ['$scope', 'UserFactory', 
 
@@ -104,7 +135,7 @@
   
   'use strict';
 
-  angular.module('Vehicles')
+  angular.module('Assets')
 
   .controller('UserController', ['$scope', 'UserFactory', '$location', 
 
@@ -135,7 +166,7 @@
   
   'use strict';
 
-  angular.module('Vehicles')
+  angular.module('Assets')
 
   .factory('UserFactory', ['$http', 'PARSE', '$cookieStore', '$location',
 
@@ -201,51 +232,43 @@
 
 	'use strict'
 
-	angular.module('Vehicles')
+	angular.module('Assets')
 
-	.controller('ListsController', [ '$scope', 'ListsFactory', '$rootScope', '$location',
+	.factory('ListsFactory', [ '$http', 'PARSE', 'UserFactory', '$rootScope', '$location',
 
-		function ($scope, ListsFactory, $rootScope, $location) {
-
-			$scope.allVehicles = [];
-
-			ListsFactory.getVehicles().success( function(data){
-				$scope.allVehicles = data.results;
-			});
-
-			
-
-
-		}
-	])
-}());
-; (function() {
-
-	'use strict'
-
-	angular.module('Vehicles')
-
-	.factory('listsFactory', [ '$http', 'PARSE', 'UserFactory', '$rootScope',
-
-		function ( $http, PARSE, UserFactory, $rootScope){
+		function ( $http, PARSE, UserFactory, $rootScope, $location){
 
 			var user = UserFactory.user();
 
-			//get list
+			//get list of Vehicles
 			var getAllVehicles = function(){
-				return $http.get(PARSE.URL + 'classes/vehicles', PARSE.CONFIG)
+				return $http.get(PARSE.URL + 'classes/Vehicles', PARSE.CONFIG)
 				.success(function(){
 					$rootScope.$broadcast('allVehicles: list');
 				});
 			};
+			//get list of appliances
+			var getAllAppliances = function(){
+				return $http.get(PARSE.URL + 'classes/Appliances', PARSE.CONFIG)
+				.success(function(){
+					$rootScope.$broadcast('allAppliances: list')
+				});
+			};
+
 
 
 			return {
 
-				getVehicles: getAllVehicles
+				get: getAllVehicles,
+				getAppliances: getAllAppliances
+		
+
+				
 			
 			};
+
 		}
+		
 
 	]);
 
@@ -261,22 +284,101 @@
 
 	'use strict'
 
-	angular.module('Vehicles')
+	angular.module('Assets')
 
-	.controller('itemsController', [ '$scope', 'ItemsFactory', '$rootScope', 
+	.controller('VehicleCtrl', ['$scope', 'ListsFactory', '$rootScope', '$cacheFactory',
 
-		function ($scope, ItemsFactory, $rootScope) {
+		function ($scope, ListsFactory, $rootScope, $cacheFactory) {
+
+			var cache = $cacheFactory.get('http');
+
+
+			
 
 			$scope.allVehicles = [];
 
-			$scope.addVehicle = function(v){
-				ItemsFactory.add(v);
-				console.log(v);
-			};
+			 ListsFactory.get().success( function(data){
+          		$scope.allVehicles = data.results;
+          		console.log(data.results);
+        		})
+		}
+	])
+}());
 
-			$rootScope.$on('Vehicle:add', function(){
+; (function() {
 
-			});
+	'use strict'
+
+	angular.module('Assets')
+
+	.controller('AppCtrl', ['$scope', 'ListsFactory', '$rootScope', '$cacheFactory',
+
+		function ($scope, ListsFactory, $rootScope, $cacheFactory) {
+
+			var cache = $cacheFactory.get('http');
+
+
+			
+
+			$scope.allAppliances = [];
+
+			 ListsFactory.getAppliances().success( function(data){
+          		$scope.allAppliances = data.results;
+          		console.log(data.results);
+        		})
+		}
+	])
+}());
+
+; (function() {
+
+	'use strict'
+
+	angular.module('Assets')
+
+	.controller('ItemsController', [ '$scope', 'ItemsFactory', '$rootScope', '$cacheFactory',
+
+		function ($scope, ItemsFactory, $rootScope, $cacheFactory) {
+
+				var cache = $cacheFactory.get('http');
+
+
+				//$scope.allVehicles = [];
+
+
+				   $scope.addVehicle = function(v){
+
+
+				        ItemsFactory.add(v);
+				        console.log(v);
+
+
+      				};
+
+
+      				$rootScope.$on('Vehicle:add', function(){
+      				});
+
+
+      				$scope.addAppliance = function(a){
+      					ItemsFactory.addApp(a);
+      					console.log(a);
+      				};
+
+      				$rootScope.$on('Appliance:add', function(){
+
+      				});
+
+			
+
+			
+
+			
+
+
+
+
+			
 		}
 	])
 
@@ -290,20 +392,37 @@
 
 	'use strict'
 
-	angular.module('Vehicles')
+	angular.module('Assets')
 
-	.factory('itemsFactory', [ '$http', 'PARSE', '$location','$rootScope',
+	.factory('ItemsFactory', [ '$http', 'PARSE', '$location','$rootScope',
 		function ($http, PARSE, $location, $rootScope){
 
-			var addVehicle = function(obj){
+
+			//add a vehicle
+			var addVehicles = function(obj){
 				$http.post(PARSE.URL + 'classes/Vehicles', obj, PARSE.CONFIG)
 				.success(function(){
 					$rootScope.$broadcast('vehicle: add');
 				});
 			};
 
+			//add an appliance
+			var addAppliance = function(obj){
+				$http.post(PARSE.URL + 'classes/Appliances', obj, PARSE.CONFIG)
+				.success(function(){
+					$rootScope.$broadcast('appliance: add');
+				});
+
+			};
+
+
+
 			return {
-				add: addVehicle
+				add: addVehicles, 
+				addApp: addAppliance
+			
+				
+
 			};
 
 		}

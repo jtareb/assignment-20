@@ -1,17 +1,18 @@
 <div class="vInfo">
+
 	<h2>Vehicle Information</h2>
 
-	<input type="text", ng-model="searchText", placeholder="Enter search information">
+	<!--<input type="text", ng-model="searchText", placeholder="Enter search information">-->
 
-	<hr>
+	
 
-		<div class="single-vehicle" ng-repeat="vehicle in allVehicles | filter: searchText">
-			<div class="vehicleContent">
-				<h2>{{ vehicle.name }}</h2>
-				<h3>Year: {{ vehicle.year }}</h3>
-				<h3>Mileage: {{ vehicle.mileage }}</h3>
-				<h3>Description {{ vehicle.desc }}</h3>
-				<h3>Estimated Value: {{ vehicle.value }}</h3>
-			</div>
+		<div class="single-vehicle" ng-repeat="vehicle in allVehicles">
+			
+				<h2>{{ vehicle.name }} </h2>
+				<h3>Year: {{ vehicle.year }} </h3>
+				<h3>Mileage: {{ vehicle.mileage }} </h3>
+				<h3>Description {{ vehicle.desc }} </h3>
+				<h3>Estimated Value: {{ vehicle.value }} </h3>
+			
 		</div>
 </div>
